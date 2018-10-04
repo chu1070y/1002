@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    .wrapper{
+        color: white;
+        background-color: crimson;
+        width: 100%;
+        display: grid;
+        grid-template:
+                'header header header header'
+                'menu menu menu sub'
+                'main main main main'
+                'footer footer footer footer';
+    }
+    .f1{
+        grid-area: header;
+        height: 10vh;
+        background-color: darkgreen;
+        border:3px solid black;
+        text-align: center;
+    }
+    .f2{
+        display: flex;
+        grid-area: menu;
+        height: 20vh;
+        border:3px solid black;
+        text-align: center;
+    }
+    .f3{
+        display: flex;
+        grid-area: main;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: white;
+        border: 3px solid black;
+    }
+
+    .f5{
+        grid-area: sub;
+        height: 98%;
+        border:3px solid black;
+        text-align: center;
+        background-color:crimson;
+    }
+
+    .row div{
+        display: flex;
+        width: 50px;
+        height: 50px;
+        margin: 100px;
+        background-color: #000000;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        border-radius: 25px;
+    }
+
+    .row{
+        margin: auto;
+        display: flex;
+        color: black;
+    }
+
+    .f2 img{
+        width: 100px;
+        margin: 25px;
+    }
+    .f3 img{
+        width: 150px;
+        margin: 37px;
+    }
+    .money{
+        margin: 10px;
+        font-size: 20px;
+        width: 200px;
+        height: 7vh;
+        text-align: right;
+    }
+
+    .f5 input{
+        width: 100%;
+        margin: 10px;
+        height: 7vh;
+        background-color: crimson;
+        font-size: 2em;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        justify-content: center;
+
+
+    }
+
+</style>
+
+
+<div class="container">
+
+    <div class="wrapper">
+
+        <div class="facet f1"><h1>가익이네 자판기</h1></div>
+        <div class="facet f2" onclick="clickCoin(event)">
+            <div class="row">
+                <div><img src="img/100.png">100</div>
+            </div>
+            <div class="row">
+                <div><img src="img/500.png">500</div>
+            </div>
+            <div class="row">
+                <div><img src="img/1000.jpg">1000</div>
+            </div>
+        </div>
+        <div class="facet f3" onclick="clickButton(event)"><h1></h1>
+            <div class="row">
+                <div><img src="img/beverage1.jpg">500</div>
+                <div><img src="img/beverage2.jpg">600</div>
+                <div><img src="img/beverage3.jpg">700</div>
+            </div>
+            <div class="row">
+                <div><img src="img/beverage4.jpg">800</div>
+                <div><img src="img/beverage5.jpg">900</div>
+                <div><img src="img/beverage6.jpg">1000</div>
+            </div>
+            <div class="row">
+                <div><img src="img/beverage7.jpg">1100</div>
+                <div><img src="img/beverage8.jpg">1200</div>
+                <div><img src="img/beverage9.jpg">1300</div>
+            </div>
+        </div>
+
+        <div class="facet f5"><h1>잔액</h1>
+            <div class="money">
+                <input type="text" id="result"  readonly>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    var resultObj = document.querySelector("#result");
+    var money = 0 ;
+
+    var data = {
+        num1: 0,
+        num2: 0,
+        oper: null
+    };
+
+    function clickButton(event) {
+        var money1 = event.target.innerText;              //뭘 클릭했는지?
+        console.log("click.........");
+        console.dir(event)
+
+        setNums(parseInt(money));
+
+        if(money < money1){
+            resultObj.value = "잔액부족";
+            return;
+        }
+
+        money = money - parseInt(money1)
+
+        resultObj.value = money;
+    }
+
+
+
+    function clickCoin(event) {
+        var money1 = event.target.innerText;              //뭘 클릭했는지?
+        console.log("click.........");
+        console.log(money);
+        console.dir(event)
+
+        setNums(parseInt(money));
+
+        money += parseInt(money1)
+
+        resultObj.value = money;
+    }
+
+    function setValue(val) {
+        resultObj.value = val;
+    }
+
+    function setNums(str) {
+        if (data.num1 == 0) {
+            data.num1 = parseInt(str);
+        } else {
+            data.num2 = parseInt(str);
+        }
+    }
+
+
+</script>
+</body>
+</html>

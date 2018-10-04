@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-wrap: wrap;
+    }
+
+    .calculator{
+        color: white;
+        width: 250px;
+        min-width: 200px;
+        min-height: 300px;
+        background-color: rgba(0,0,0,0.81);
+        box-shadow: 0 15px 10px #777;
+    }
+
+    .displayPart{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .displayPart input{
+        margin: 10px;
+        border: 1px dotted black;
+        box-shadow: 5px 5px #777;
+        font-size: 2em;
+        width: 90%;
+        border-radius: 20px;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .buttonPart{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .row div{
+        display: flex;
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        background-color: #000000;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        border-radius: 25px;
+    }
+
+    .row{
+        margin: auto;
+        display: flex;
+        color: white;
+
+    }
+
+</style>
+
+<div class="container">
+
+    <div class="calculator">
+        <div class="displayPart">
+            <input type="text" id="result" readonly>
+        </div>
+
+        <div class="buttonPart" onclick="clickButton(event)">
+            <div class="row">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>+</div>
+            </div>
+            <div class="row">
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>-</div>
+            </div>
+            <div class="row">
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+                <div>*</div>
+            </div>
+            <div class="row">
+                <div>0</div>
+                <div>=</div>
+                <div>C</div>
+                <div>/</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    var resultObj = document.querySelector("#result");
+
+    var data = {
+        num1: 0,
+        num2: 0,
+        oper: null
+    };
+
+    function clickButton(event) {
+
+        var value = event.target.innerHTML;              //뭘 클릭했는지?
+        console.log("click.........");
+        console.log(value);
+
+        //초기화
+        if (value === 'C') {
+            setValue('');
+            data.num1 = 0;
+            data.num2 = 0;
+            return;
+        }
+
+        var parseResult = parseInt(value);               //정수형으로 변환하기
+
+        if (isNaN(parseResult)) {                        //연산자가 입력받으면~
+
+            if(value === "="){                           // = 일때~
+                setNums(resultObj.value);              //숫자를 저장하고~
+                data.num1 = makeResult(data.oper);     //결과를 num1에 저장하고
+                setValue(data.num1);                    // num1을 불러온다~
+                return;
+            }
+
+            data.oper = value;                          //연산자를 저장하고~
+            setNums(resultObj.value);                  //숫자를 저장하고~
+            setValue('');                               //출력값을 초기화한다.
+        }else{
+            resultObj.value += value;                 //숫자 여러개 입력받기~
+        }
+
+        function setValue(val) {
+            resultObj.value = val;
+        }
+
+        function setNums(str) {
+            if (data.num1 == 0) {
+                data.num1 = parseInt(str);
+            } else {
+                data.num2 = parseInt(str);
+            }
+        }
+
+        function makeResult(oper) {
+            if (oper === '+'){
+                return data.num1 + data.num2;
+            } else if (oper === '-'){
+                return data.num1 - data.num2;
+            } else if (oper === '*'){
+                return data.num1 * data.num2;
+            } else if (oper === '/'){
+                return data.num1 / data.num2;
+            }
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

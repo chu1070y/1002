@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    .items{
+        border: 1px solid blue;
+    }
+
+    .items ul{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .items ul li{
+        list-style: none;
+        width: 150px;
+        height: 150px;
+        background: -webkit-linear-gradient(top, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);
+        border-radius: 75px;
+        margin: 2px;
+    }
+
+    .items ul li:nth-child(even){
+        background: -webkit-linear-gradient(top, #c9de96 0%,#8ab66b 44%,#398235 100%);
+    }
+
+    img{
+        width: 100px;
+        margin: 25px;
+        border-radius: 50px;
+    }
+
+</style>
+
+<div class="items">
+    <ul>
+        <li><img src="img/face1.jpg"> </li>
+        <li><img src="img/face2.jpg"> </li>
+        <li><img src="img/face3.jpg"> </li>
+        <li><img src="img/face4.jpg"> </li>
+    </ul>
+</div>
+
+<div class="items">
+    <ul>
+        <li><img src="img/face5.jpg"> </li>
+        <li><img src="img/face6.jpg"> </li>
+        <li><img src="img/face7.jpg"> </li>
+        <li><img src="img/face8.jpg"> </li>
+    </ul>
+</div>
+
+</body>
+</html>

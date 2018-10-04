@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .container{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+
+        .wrapper{
+            width: 80%;
+            min-width: 600px;
+            background-color: gray;
+            height: 100vh;
+        }
+        /*선 넣었을 때 픽셀 어긋나지 않게 함*/
+        .wrapper div{
+            border: 1px solid white;
+            box-sizing: border-box;
+        }
+
+        .header{
+            height: 10vh;
+            background-color: darkred;
+        }
+
+        .pagecenter{
+            height: 80vh;
+            display: flex;
+        }
+
+        .menu{
+            width: 25%;
+            background-color: darkblue;
+        }
+
+        .main{
+            width: 75%;
+            background-color: green;
+        }
+
+        .footer{
+            height: 10vh;
+            background-color: orangered;
+        }
+
+
+    </style>
+
+    <div class="container">
+        <div class="wrapper">
+            <div class="header">
+                Header
+            </div>
+            <div class="pagecenter">
+                <div class="menu">MENU</div>
+                <div class="main">MAIN</div>
+            </div>
+            <div class="footer">
+                Footer
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
